@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "install-all": "cd client && npm install && cd ../server && npm install",
+    "postinstall": "npm run install-all"
+  },
   "devDependencies": {
     "ngrok": "^5.0.0-beta.2"
   }
