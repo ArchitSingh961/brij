@@ -1,0 +1,274 @@
+.footer {
+    background: var(--neutral-800);
+    color: var(--neutral-300);
+    padding: var(--space-12) 0 var(--space-8);
+    margin-top: auto;
+}
+
+/* Map Section */
+.footer-map-section {
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-10);
+    border-bottom: 1px solid var(--neutral-700);
+}
+
+.footer-map-section .footer-title {
+    text-align: center;
+    margin-bottom: var(--space-4);
+}
+
+.footer-map {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--space-3);
+}
+
+.footer-map iframe {
+    display: block;
+}
+
+.map-link {
+    display: inline-block;
+    color: var(--primary-400);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.map-link:hover {
+    color: var(--primary-300);
+}
+
+/* Footer Grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    }
+}
+
+/* Brand Section */
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-logo {
+    margin-bottom: var(--space-4);
+}
+
+.footer-logo-image {
+    height: 60px;
+    width: auto;
+}
+
+.footer-logo .logo-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: white;
+}
+
+.footer-logo .logo-tagline {
+    font-size: var(--text-xs);
+    color: var(--neutral-400);
+}
+
+.footer-desc {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    color: var(--neutral-400);
+}
+
+/* Sections */
+.footer-section {
+    min-width: 0;
+}
+
+.footer-title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-4);
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.footer-nav a {
+    color: var(--neutral-400);
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-400);
+}
+
+/* Contact */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.contact-item {
+    display: flex;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--neutral-400);
+    line-height: 1.5;
+}
+
+.contact-icon {
+    flex-shrink: 0;
+}
+
+/* Bottom */
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--neutral-700);
+    text-align: center;
+    font-size: var(--text-sm);
+}
+
+@media (min-width: 768px) {
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: var(--neutral-400);
+}
+
+.footer-links a:hover {
+    color: var(--primary-400);
+}
+
+.footer-links span {
+    color: var(--neutral-600);
+}
+
+/* Social Icons */
+.social-links {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: white;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon.facebook {
+    background: #1877F2;
+}
+
+.social-icon.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+/* E-commerce Links */
+.ecommerce-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    text-decoration: none;
+}
+
+.ecommerce-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ecom-logo {
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+}
+
+.ecommerce-link.bigbasket {
+    background: #84C225;
+}
+
+.ecommerce-link.bigbasket .ecom-logo {
+    font-size: 18px;
+    font-style: italic;
+}
+
+.ecommerce-link.blinkit {
+    background: #f8cb46;
+}
+
+.ecommerce-link.blinkit .ecom-logo {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.ecommerce-link.jiomart {
+    background: #e53935;
+}
+
+.ecommerce-link.jiomart .jiomart-logo {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.social-icon.brand-logo {
+    background: white;
+    padding: 0;
+    overflow: hidden;
+}
+
+.social-icon.brand-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}

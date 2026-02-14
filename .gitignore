@@ -1,0 +1,10 @@
+node_modules/
+.env
+dist/
+build/
+.vscode/
+ngrok_output.txt
+ngrok_tunnels.json
+ngrok_url.txt
+tunnels.json
+*.log

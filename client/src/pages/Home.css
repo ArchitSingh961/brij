@@ -1,0 +1,116 @@
+/* Continuously Rolling Banner */
+.rolling-banner-section {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    padding: 0;
+}
+
+.rolling-banner-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.rolling-banner-track {
+    display: flex;
+    animation: scroll-banner 20s linear infinite;
+    width: max-content;
+    will-change: transform;
+}
+
+/* Banner scrolls continuously without pausing */
+.rolling-banner-slide {
+    flex-shrink: 0;
+    height: 400px;
+}
+
+.rolling-banner-slide img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+@keyframes scroll-banner {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-25%);
+    }
+}
+
+@media(max-width: 768px) {
+    .rolling-banner-slide {
+        height: 250px;
+    }
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-6);
+}
+
+.feature-card {
+    text-align: center;
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-4);
+}
+
+.feature-card h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+}
+
+.feature-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+    color: white;
+}
+
+.cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+}
+
+.cta-content p {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+    margin-bottom: var(--space-8);
+}
+
+.cta-content .btn {
+    background: white;
+    color: var(--primary-600);
+}
+
+.cta-content .btn:hover {
+    background: var(--neutral-100);
+}
