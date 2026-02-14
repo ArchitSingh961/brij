@@ -224,7 +224,8 @@ const startServer = async () => {
     });
 };
 
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+// Start the server if run directly (e.g. node src/index.js)
+if (require.main === module) {
     startServer();
 }
 
