@@ -1,9 +1,11 @@
 {
   "scripts": {
     "install-all": "cd client && npm install && cd ../server && npm install",
-    "postinstall": "npm run install-all"
+    "postinstall": "npm run install-all",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "ngrok": "^5.0.0-beta.2"
   },
   "dependencies": {
