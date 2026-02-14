@@ -25,6 +25,7 @@
     "multer": "^2.0.2",
     "nodemailer": "^6.9.7",
     "razorpay": "^2.9.2",
+    "serverless-http": "^4.0.0",
     "uuid": "^9.0.1",
     "xss-clean": "^0.1.4"
   },
