@@ -101,7 +101,24 @@ const additionalSecurityHeaders = (req, res, next) => {
  * CORS configuration
  */
 const corsOptions = {
-    origin: true, // Allow ALL origins for now to fix the demo
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'http://localhost:5173',
+            'http://localhost:5000',
+            process.env.FRONTEND_URL // Production URL from environment
+        ];
+
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.netlify.app')) {
+            callback(null, true);
+        } else {
+            console.log('Blocked by CORS:', origin);
+            // Verify if we want to block or just allow all for now to fix connection
+            callback(null, true); // Temporarily allow all for troubleshooting
+        }
+    },
     credentials: true, // Allow cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],

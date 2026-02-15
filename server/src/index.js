@@ -60,6 +60,60 @@ app.use(require('express-mongo-sanitize')());
 app.use(require('hpp')());
 
 // =============================================================================
+// DATABASE CONNECTION
+// =============================================================================
+
+let isConnected = false;
+
+const connectDB = async () => {
+    if (isConnected) return;
+
+    try {
+        const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/brij-namkeen';
+
+        await mongoose.connect(mongoURI, {
+            // Modern Mongoose options
+        });
+
+        isConnected = true;
+        console.log('✅ MongoDB connected successfully');
+
+        // Create default admin if not exists
+        const Admin = require('./models/Admin');
+        const adminExists = await Admin.findOne({ email: process.env.ADMIN_EMAIL });
+
+        if (!adminExists && process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
+            await Admin.create({
+                email: process.env.ADMIN_EMAIL,
+                password: process.env.ADMIN_PASSWORD,
+                name: 'Admin',
+                role: 'admin'
+            });
+            console.log('✅ Default admin created');
+        }
+
+    } catch (error) {
+        console.error('❌ MongoDB connection error:', error.message);
+        if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
+            process.exit(1);
+        }
+    }
+};
+
+// Vercel serverless: connect to DB lazily on first request
+if (process.env.VERCEL) {
+    app.use(async (req, res, next) => {
+        try {
+            await connectDB();
+            next();
+        } catch (error) {
+            console.error('DB connection middleware error:', error);
+            res.status(500).json({ success: false, error: 'Database connection failed' });
+        }
+    });
+}
+
+// =============================================================================
 // REQUEST LOGGING (Development only)
 // =============================================================================
 
@@ -172,41 +226,8 @@ app.use((err, req, res, next) => {
 });
 
 // =============================================================================
-// DATABASE CONNECTION & SERVER START
+// SERVER START (local development only)
 // =============================================================================
-
-const connectDB = async () => {
-    try {
-        const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/brij-namkeen';
-
-        await mongoose.connect(mongoURI, {
-            // Modern Mongoose options
-        });
-
-        console.log('✅ MongoDB connected successfully');
-
-        // Create default admin if not exists
-        const Admin = require('./models/Admin');
-        const adminExists = await Admin.findOne({ email: process.env.ADMIN_EMAIL });
-
-        if (!adminExists && process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
-            await Admin.create({
-                email: process.env.ADMIN_EMAIL,
-                password: process.env.ADMIN_PASSWORD,
-                name: 'Admin',
-                role: 'admin'
-            });
-            console.log('✅ Default admin created');
-        }
-
-    } catch (error) {
-        console.error('❌ MongoDB connection error:', error.message);
-        // In development, continue without DB for testing
-        if (process.env.NODE_ENV === 'production') {
-            process.exit(1);
-        }
-    }
-};
 
 const startServer = async () => {
     await connectDB();
@@ -230,4 +251,3 @@ if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
 
 module.exports = app;
 module.exports.connectDB = connectDB;
-
