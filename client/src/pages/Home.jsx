@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import ProductCard from '../components/ProductCard'
 import ScrollReveal from '../components/ScrollReveal'
 import { SkeletonCard } from '../components/Skeleton'
+import Testimonials from '../components/Testimonials'
 import './Home.css'
 
 function Home() {
@@ -216,6 +217,9 @@ function Home() {
                     </div>
                 </div>
             </section>
+
+            {/* Testimonials Section */}
+            <Testimonials />
 
 
 

@@ -2,13 +2,15 @@
   "scripts": {
     "install-all": "cd client && npm install && cd ../server && npm install",
     "postinstall": "npm run install-all",
-    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "share": "ngrok http 5173"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
     "ngrok": "^5.0.0-beta.2"
   },
   "dependencies": {
+    "mongodb": "^7.1.0",
     "mongoose": "^9.2.1",
     "serverless-http": "^4.0.0"
   }
