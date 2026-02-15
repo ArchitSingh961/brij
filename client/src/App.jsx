@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { HelmetProvider } from 'react-helmet-async'
 import ScrollToTop from './components/ScrollToTop'
@@ -28,6 +28,22 @@ function App() {
                         {/* Admin Routes - No Navbar/Footer */}
                         <Route path="/admin/login" element={<AdminLogin />} />
                         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+                        {/* Redirects for old WordPress/WooCommerce URLs */}
+                        <Route path="/product" element={<Navigate to="/" replace />} />
+                        <Route path="/product/*" element={<Navigate to="/" replace />} />
+                        <Route path="/shop" element={<Navigate to="/" replace />} />
+                        <Route path="/shop/*" element={<Navigate to="/" replace />} />
+                        <Route path="/cart" element={<Navigate to="/" replace />} />
+                        <Route path="/checkout" element={<Navigate to="/" replace />} />
+                        <Route path="/checkout/*" element={<Navigate to="/" replace />} />
+                        <Route path="/my-account" element={<Navigate to="/" replace />} />
+                        <Route path="/my-account/*" element={<Navigate to="/" replace />} />
+                        <Route path="/category/*" element={<Navigate to="/" replace />} />
+                        <Route path="/product-category/*" element={<Navigate to="/" replace />} />
+                        <Route path="/wp-admin/*" element={<Navigate to="/" replace />} />
+                        <Route path="/wp-content/*" element={<Navigate to="/" replace />} />
+                        <Route path="/wp-login.php" element={<Navigate to="/" replace />} />
 
                         {/* Public Routes - With Navbar/Footer */}
                         <Route path="/*" element={
