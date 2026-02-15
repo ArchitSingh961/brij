@@ -35,7 +35,7 @@ function App() {
                                 <Navbar />
                                 <main className="main-content">
                                     <Routes>
-                                        <Route path="/" element={<Home />} />
+                                        <Route index element={<Home />} />
                                         <Route path="/search" element={<Search />} />
 
                                         <Route path="/products/:id" element={<ProductDetail />} />
